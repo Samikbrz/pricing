@@ -1,4 +1,4 @@
-package com.example.pricing.respository;
+package com.example.pricing.repository;
 
 import com.example.pricing.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;

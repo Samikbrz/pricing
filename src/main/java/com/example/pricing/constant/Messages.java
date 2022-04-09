@@ -7,5 +7,5 @@ public class Messages {
     public static final String PRODUCT_NAME_NOT_VALID = "Product name must not be null or empty!";
     public static final String PRODUCT_NOT_FOUND = "Product not found!";
     public static final String PRODUCT_ALREADY_EXIST = "Product already exist!";
-
+    public static final String PRODUCT_DISCOUNT_NOT_VALID = "Product with a discount rate must not be null or 0";
 }

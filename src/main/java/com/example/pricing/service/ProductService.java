@@ -2,12 +2,10 @@ package com.example.pricing.service;
 
 import com.example.pricing.constant.Messages;
 import com.example.pricing.exception.AlreadyExistException;
-import com.example.pricing.exception.ApiRequestException;
 import com.example.pricing.exception.NotFoundException;
 import com.example.pricing.model.Product;
-import com.example.pricing.respository.ProductRepository;
+import com.example.pricing.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

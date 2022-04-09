@@ -15,4 +15,9 @@ public class ProductAspect {
     public void beforeSaveProduct(JoinPoint joinPoint) {
         new ProductValidator((Product) joinPoint.getArgs()[0]).validate();
     }
+
+    @Before("execution(* com.example.pricing.controller.ProductController.updateProduct(..))")
+    public void beforeUpdateProduct(JoinPoint joinPoint) {
+        new ProductValidator((Product) joinPoint.getArgs()[0]).validate();
+    }
 }

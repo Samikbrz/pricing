@@ -1,9 +1,9 @@
 package com.example.pricing.controller;
 
-import com.example.pricing.ApiExceptionHandler;
 import com.example.pricing.constant.Messages;
-import com.example.pricing.exception.ApiRequestException;
+import com.example.pricing.model.Basket;
 import com.example.pricing.model.Product;
+import com.example.pricing.service.BasketService;
 import com.example.pricing.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +18,9 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private BasketService basketService;
 
     @PostMapping
     public ResponseEntity<Object> save(@RequestBody Product product) {
@@ -35,5 +38,13 @@ public class ProductController {
         product.setId(id);
         productService.updateProduct(product);
         return new ResponseEntity<>(Messages.PRODUCT_UPDATED, HttpStatus.OK);
+    }
+
+    @PostMapping("/addToBasket/{id}")
+    public ResponseEntity<Object> addToBasket(@PathVariable long id) {
+        Basket basket = new Basket();
+        basket.setProductId(id);
+        basketService.addProductToBasket(basket);
+        return new ResponseEntity<>(Messages.PRODUCT_ADDED, HttpStatus.OK);
     }
 }

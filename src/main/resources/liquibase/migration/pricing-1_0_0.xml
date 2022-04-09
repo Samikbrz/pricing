@@ -12,4 +12,24 @@
             <column name="price" type="decimal"/>
         </createTable>
     </changeSet>
+    <changeSet id="create_basket_table" author="sami">
+        <createTable schemaName="${schema}" tableName="basket">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="product_id" type="bigint"/>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="basket" baseColumnNames="product_id" constraintName="fk_product_basket_rl" referencedTableName="product"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet id="add_column_product" author="sami">
+       <addColumn tableName="product">
+           <column name="discount_rate" type="decimal"/>
+       </addColumn>
+    </changeSet>
+    <changeSet id="add_column_product_2" author="sami">
+        <addColumn tableName="product">
+            <column name="has_discount" type="tinyint"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>
