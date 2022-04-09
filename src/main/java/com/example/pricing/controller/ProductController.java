@@ -16,11 +16,14 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductController {
 
-    @Autowired
-    private ProductService productService;
+    private final ProductService productService;
+    private final BasketService basketService;
 
     @Autowired
-    private BasketService basketService;
+    public ProductController(ProductService productService, BasketService basketService) {
+        this.productService = productService;
+        this.basketService = basketService;
+    }
 
     @PostMapping
     public ResponseEntity<Object> save(@RequestBody Product product) {
