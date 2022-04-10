@@ -1,6 +1,7 @@
 package com.example.pricing.model;
 
 import com.example.pricing.dto.ProductDto;
+import com.example.pricing.model.enums.DiscountType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,9 +19,10 @@ import java.util.List;
         query =
                 " SELECT p.name as productName, p.price, "
                         + " COUNT(p.id) as productCount, "
-                        + " COUNT(p.id)*p.price as totalPrice "
+                        + " COUNT(p.id)*p.price as totalPrice, "
+                        + " p.discount_type as discountType "
                         + " FROM Basket b LEFT JOIN Product p ON b.product_id = p.id "
-                        + " GROUP BY p.name, p.price ",
+                        + " GROUP BY p.name, p.price, p.discount_type ",
         resultSetMapping = "get_products_with_count"
 )
 @SqlResultSetMapping(
@@ -31,7 +33,8 @@ import java.util.List;
                         @ColumnResult(name = "productName", type = String.class),
                         @ColumnResult(name = "price", type = Float.class),
                         @ColumnResult(name = "productCount", type = Integer.class),
-                        @ColumnResult(name = "totalPrice", type = Float.class)
+                        @ColumnResult(name = "totalPrice", type = Float.class),
+                        @ColumnResult(name = "discountType", type = String.class)
                 }
         )
 )

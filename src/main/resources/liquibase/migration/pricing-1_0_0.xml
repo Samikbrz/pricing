@@ -32,4 +32,9 @@
             <column name="has_discount" type="tinyint"/>
         </addColumn>
     </changeSet>
+    <changeSet id="add_column_product_3" author="sami">
+        <addColumn tableName="product">
+            <column name="discount_type" type="varchar(25)"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

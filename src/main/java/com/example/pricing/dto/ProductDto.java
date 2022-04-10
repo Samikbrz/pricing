@@ -14,4 +14,6 @@ public class ProductDto {
     private int totalCount;
 
     private Float totalPrice;
+
+    private String discountType;
 }

@@ -1,6 +1,8 @@
 package com.example.pricing.model;
 
+import com.example.pricing.model.enums.DiscountType;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
@@ -12,6 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 public class Product implements Model {
 
     @Id
@@ -27,6 +30,9 @@ public class Product implements Model {
 
     @Column(name = "discount_rate")
     private Float discountRate;
+
+    @Enumerated(EnumType.STRING)
+    private DiscountType discountType;
 
     @Column(name = "price")
     private Float price;
